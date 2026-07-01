@@ -1,5 +1,4 @@
 import type { CapacitorConfig } from '@capacitor/cli';
-import {StatusBar} from "@capacitor/status-bar";
 
 const config: CapacitorConfig = {
   appId: 'com.stefan.etiquette',
@@ -20,4 +19,3 @@ const config: CapacitorConfig = {
 };
 
 export default config;
-
