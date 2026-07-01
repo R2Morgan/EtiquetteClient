@@ -1,3 +1,3 @@
 export const environment = {
-  production: true
+  apiUrl: 'https://etiquetteserver-production.up.railway.app/etiquetteApi'
 };

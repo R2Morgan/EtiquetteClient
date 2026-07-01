@@ -1,0 +1,8 @@
+{
+  "/etiquetteApi": {
+    "target": "https://etiquetteserver-production.up.railway.app",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

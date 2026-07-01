@@ -35,3 +35,81 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+html {
+  --color-accent: #565141;
+  --color-accent2: #7A6F52;
+  --color-main: #f8f2e3;
+  --color-invalid: #eb445a;
+  --color-secondary: #efb951;
+}
+
+ion-app {
+  background: var(--color-main) !important;
+}
+
+ion-input {
+  --highlight-color-focused: var(--color-accent) !important;
+  --highlight-color-valid: var(--color-accent) !important;
+  --highlight-color-invalid: var(--color-invalid) !important;
+}
+
+ion-toast {
+  --background: var(--color-accent);
+  --color: var(--color-main);
+  --border-radius: 10px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+ion-toast::part(container) {
+  backdrop-filter: blur(6px);
+}
+
+.basic-background {
+  height: 100%;
+  width: 100%;
+  padding: 24px;
+  background: var(--color-main);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+ion-header, ion-toolbar {
+  opacity: 1 !important;
+  --opacity: 1 !important;
+  --background-opacity: 1 !important;
+  transition: none !important;
+}
+
+ion-header {
+  background: var(--color-main) !important;
+}
+
+ion-toolbar {
+  --background: var(--color-main) !important;
+  --border-width: 0 !important;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+
+  ion-spinner {
+    color: var(--color-accent);
+    width: 32px;
+    height: 32px;
+  }
+}
