@@ -1,0 +1,10 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">Etiquette Society</ion-title>
+    <ion-buttons slot="end" *ngIf="isAdmin">
+      <ion-tab-button (click)="goToAddNewPost()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

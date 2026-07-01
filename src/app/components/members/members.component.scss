@@ -1,0 +1,120 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-main);
+  color: var(--color-accent);
+}
+
+ion-content {
+  --background: var(--color-main);
+}
+
+ion-toolbar {
+  --background: var(--color-main);
+  --color: var(--color-accent);
+  padding: 3px 6px 6px;
+  border-bottom: 0.5px solid rgba(122, 111, 82, 0.2);
+}
+
+ion-title {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+ion-button {
+  --background: transparent;
+  --box-shadow: none;
+  --color: var(--color-accent);
+}
+
+.members-container {
+  padding: 16px 20px 120px;
+}
+
+.member-count {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0.4;
+  margin: 0 0 16px;
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid rgba(122, 111, 82, 0.15);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.member-avatar {
+  position: relative;
+  flex-shrink: 0;
+
+  img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(122, 111, 82, 0.2);
+  }
+}
+
+.avatar-placeholder {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(122, 111, 82, 0.15);
+  border: 1px solid rgba(122, 111, 82, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--color-accent);
+  opacity: 0.7;
+}
+
+.member-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.member-name {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--color-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-tier {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0.4;
+}
+
+.call-btn {
+  --color: var(--color-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,61 @@
+<header-component></header-component>
+<ion-content class="feed-content" *ngIf="loading">
+  <div class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+<ion-content class="feed-content" *ngIf="!loading">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="chips">
+    <ion-chip (click)="onSetFilter()" class="filter {{filterType.substring(0,2)}}">{{ filterType }}</ion-chip>
+    <ion-chip (click)="goToMembers()" class="members-chip">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Our Members ></ion-label>
+    </ion-chip>
+  </div>
+
+  <!-- Posts -->
+  <div class="posts-container">
+    <div class="post-card" *ngFor="let post of posts">
+
+      <!-- Post header -->
+      <div class="post-header">
+        <div class="post-author-avatar">
+          <img *ngIf="post.authorPicture" [src]="post.authorPicture" />
+          <div *ngIf="!post.authorPicture" class="author-placeholder">
+            {{ post.authorName.charAt(0) }}
+          </div>
+        </div>
+        <div class="post-author-info">
+          <span class="author-name">{{ post.authorName }}</span>
+          <span class="post-date">{{ post.createdAt | date:'d MMM yyyy' }}</span>
+        </div>
+        <span class="post-type-badge" [ngClass]="badgeClass(post.type)">
+          {{ typeName(post.type) }}
+        </span>
+      </div>
+
+      <!-- Post image -->
+      <div class="post-image" *ngIf="post.imageUrl">
+        <img [src]="post.imageUrl" />
+      </div>
+
+      <!-- Post content -->
+      <div class="post-body">
+        <h3 class="post-title" *ngIf="post.title">{{ post.title }}</h3>
+        <p class="post-content">{{ post.content }}</p>
+      </div>
+
+    </div>
+
+    <div class="empty-state" *ngIf="posts.length === 0">
+      <p>No posts yet.</p>
+    </div>
+
+  </div>
+
+</ion-content>
+<footer-component></footer-component>

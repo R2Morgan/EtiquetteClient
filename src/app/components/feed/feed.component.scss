@@ -1,0 +1,171 @@
+:host {
+  height: 100vh;
+  background-color: var(--color-main);
+  color: var(--color-accent);
+}
+
+ion-content {
+  --background: var(--color-main) !important;
+  --color: var(--color-accent);
+}
+
+// Your original chip styles
+.members-chip {
+  --color: var(--color-main);
+  --background: var(--color-secondary);
+  width: fit-content;
+}
+
+.filter {
+  width: fit-content;
+}
+
+.Fi {
+  border: var(--color-secondary) 2px solid;
+  --color: var(--color-accent);
+  --background: transparent;
+}
+
+.Ev { --color: var(--color-main); --background: #a0cf7a; }
+.Me { --color: var(--color-main); --background: #cfa77a; }
+.Up { --color: var(--color-main); --background: #7a8ecf; }
+.Ne { --color: var(--color-main); --background: #cf7a7d; }
+.Ot { --color: var(--color-main); --background: #a97acf; }
+
+.chips {
+  display: flex;
+  flex-direction: row;
+  padding: 4% 2%;
+}
+
+// Posts
+.posts-container {
+  padding: 0 15px 80px;
+}
+
+.post-card {
+  margin-bottom: 15px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.post-author-avatar {
+  flex-shrink: 0;
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(122, 111, 82, 0.2);
+  }
+}
+
+.author-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(122, 111, 82, 0.12);
+  border: 1px solid rgba(122, 111, 82, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.post-author-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.post-date {
+  font-size: 11px;
+  color: var(--color-accent);
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
+
+.post-type-badge {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+
+  &.badge-media { background: rgba(160, 207, 122, 0.2); color: #5a8a30; }
+  &.badge-spotlight { background: rgba(207, 167, 122, 0.2); color: #8a5a20; }
+  &.badge-event { background: rgba(122, 142, 207, 0.2); color: #2a3a8a; }
+  &.badge-news { background: rgba(207, 122, 125, 0.2); color: #8a2a2d; }
+  &.badge-other { background: rgba(169, 122, 207, 0.2); color: #5a2a8a; }
+}
+
+.post-image {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 0.5px solid rgba(122, 111, 82, 0.15);
+
+  img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 280px;
+  }
+}
+
+.post-title {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--color-accent);
+  margin: 0 0 6px;
+}
+
+.post-content {
+  font-size: 14px;
+  color: var(--color-accent);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.post-divider {
+  height: 0.5px;
+  background: rgba(122, 111, 82, 0.15);
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: var(--color-accent);
+  opacity: 0.4;
+}
+
+.post-card{
+  background: var(--color-main) !important;
+  padding: 12px 12px;
+  border-radius: 8px;
+}
+
+ion-content{
+  --background: #f1ebdb !important;
+}

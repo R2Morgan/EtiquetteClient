@@ -1,0 +1,43 @@
+<div class="basic-background">
+  <img src="assets/icon/logo_noBg.png">
+
+  <form [formGroup]="loginForm">
+
+    <ion-input
+      formControlName="username"
+      type="text"
+      fill="solid"
+      label="Username"
+      labelPlacement="floating"
+      helperText="3–30 chars, letters, numbers, . or _"
+    ></ion-input>
+
+    <ion-input
+      formControlName="password"
+      type="password"
+      fill="solid"
+      label="Password"
+      labelPlacement="floating"
+      helperText="Min. 8 chars, uppercase, lowercase, number"
+    ></ion-input>
+
+    <a routerLink="/forgot-password">Forgot your password?</a>
+
+    <ion-button [disabled]="!loginForm.valid" (click)="login()">
+      Log In
+    </ion-button>
+
+    <p>
+      Don't have an account yet?
+      <a routerLink="/register">Register here!</a>
+    </p>
+
+  </form>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    [message]="toastMessage"
+    [duration]="3000"
+    (didDismiss)="setOpen(false)"
+    swipeGesture="vertical"
+  ></ion-toast>
+</div>

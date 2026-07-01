@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button (click)="goBack()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title slot="end">OUR MEMBERS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="loading">
+  <div class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!loading">
+  <div class="members-container">
+    <p class="member-count">{{ activeMembers.length }} members</p>
+
+    <div class="member-card" *ngFor="let member of activeMembers">
+      <div class="member-avatar">
+        <img *ngIf="member?.profilePicture" [src]="member.profilePicture" />
+        <div *ngIf="!member.profilePicture" class="avatar-placeholder">
+          {{ member.firstName.charAt(0) }}
+        </div>
+      </div>
+
+      <div class="member-info">
+        <span class="member-name">{{ member.firstName }} {{ member.lastName }}</span>
+        <span class="member-tier">{{ tierName(member.membershipType) }}</span>
+      </div>
+
+      <ion-button class="call-btn" fill="clear" (click)="openWhatsApp(member.phone)">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

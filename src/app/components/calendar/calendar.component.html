@@ -1,0 +1,77 @@
+<header-component></header-component>
+<ion-content class="calendar-content" *ngIf="loading">
+  <div class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+<ion-content class="calendar-content" *ngIf="!loading">
+  <div class="calendar-container">
+
+    <div class="page-header">
+      <h2>Upcoming Events</h2>
+      <p>{{ headerDateRange }}</p>
+    </div>
+
+    <div class="events-list" *ngIf="groupedEvents">
+      <ng-container *ngFor="let group of groupedEvents">
+        <p class="section-label">{{ group.label }}</p>
+        <div class="event-card" *ngFor="let event of group.events" (click)="openDetail(event)">
+          <div class="date-block">
+            <span class="date-day">{{ event.date | date:'d' }}</span>
+            <span class="date-month">{{ event.date | date:'MMM' }}</span>
+          </div>
+          <div class="divider-v"></div>
+          <div class="event-info">
+            <span class="event-badge" [ngClass]="badgeClass(event.type)">
+              {{ eventTypeName(event.type) }}
+            </span>
+            <p class="event-title">{{ event.title }}</p>
+            <div class="event-meta">
+              <span>{{ event.location }}</span>
+            </div>
+          </div>
+          <span class="spots" [class.low]="spotsLeft(event) <= 3">
+            {{ spotsLeft(event) }} left
+          </span>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="empty-state" *ngIf="groupedEvents?.length === 0">
+      <p>No upcoming events at this time.</p>
+    </div>
+
+  </div>
+
+  <!-- Detail Sheet -->
+  <div class="detail-overlay" [class.open]="selectedEvent !== null" (click)="closeDetail()">
+    <div class="detail-sheet" (click)="$event.stopPropagation()" *ngIf="selectedEvent">
+      <div class="sheet-handle"></div>
+      <span class="event-badge" [ngClass]="badgeClass(selectedEvent.type)">
+        {{ eventTypeName(selectedEvent.type) }}
+      </span>
+      <h3 class="sheet-title">{{ selectedEvent.title }}</h3>
+      <p class="sheet-date">{{ selectedEvent.date | date:'EEEE, d MMMM yyyy · h:mm a' }}</p>
+      <p class="sheet-desc">{{ selectedEvent.description }}</p>
+      <div class="sheet-row">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>{{ selectedEvent.location }}</span>
+      </div>
+      <div class="sheet-row">
+        <ion-icon name="people-outline"></ion-icon>
+        <span>{{ spotsLeft(selectedEvent) }} spots remaining</span>
+      </div>
+      <div class="exclusive-warning" *ngIf="selectedEvent.type === 2 && !hasWhiteTie">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <span>This event is for White Tie members only</span>
+      </div>
+      <button class="book-btn"
+              (click)="book(selectedEvent)"
+              [disabled]="spotsLeft(selectedEvent) === 0 || (selectedEvent.type === 2 && !hasWhiteTie) || booking || selectedEvent.bookedByMe || !user?.isActiveMember">
+        {{ selectedEvent.bookedByMe ? 'Already booked' : booking ? 'Booking...' : 'Reserve my spot' }}
+      </button>
+    </div>
+  </div>
+
+</ion-content>
+<footer-component></footer-component>

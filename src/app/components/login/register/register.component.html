@@ -1,0 +1,86 @@
+<div>
+  <h2>Create Account</h2>
+
+  <form [formGroup]="registerForm">
+
+    <ion-input
+      formControlName="firstName"
+      type="text"
+      fill="solid"
+      label="First Name"
+      labelPlacement="floating"
+      helperText="Letters only, can include spaces or hyphens"
+    ></ion-input>
+
+    <ion-input
+      formControlName="lastName"
+      type="text"
+      fill="solid"
+      label="Last Name"
+      labelPlacement="floating"
+      helperText="Letters only, can include spaces or hyphens"
+    ></ion-input>
+
+    <ion-input
+      formControlName="username"
+      type="text"
+      fill="solid"
+      label="Username"
+      labelPlacement="floating"
+      helperText="3–30 chars, letters, numbers, . or _, no trailing dot"
+    ></ion-input>
+
+    <ion-input
+      formControlName="email"
+      type="email"
+      fill="solid"
+      label="Email"
+      labelPlacement="floating"
+      helperText="Enter a valid email (e.g. name@email.com)"
+    ></ion-input>
+
+    <ion-input
+      formControlName="phone"
+      type="phone"
+      fill="solid"
+      label="Phone"
+      labelPlacement="floating"
+      helperText="Enter a valid phone number (e.g. 0740123456)"
+    ></ion-input>
+
+    <ion-input
+      formControlName="password"
+      type="password"
+      fill="solid"
+      label="Password"
+      labelPlacement="floating"
+      helperText="Min. 8 chars, uppercase, lowercase, number"
+    ></ion-input>
+
+    <ion-input
+      formControlName="confirmPassword"
+      type="password"
+      fill="solid"
+      label="Confirm Password"
+      labelPlacement="floating"
+      helperText="Re-enter your password"
+    ></ion-input>
+
+    <ion-button [disabled]="!(formValid && passwordsMatch)" (click)="registerUser()">
+      Register
+    </ion-button>
+
+    <p>
+      Already have an account?
+      <a routerLink="/login">Log in</a>
+    </p>
+
+  </form>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="User already exists!"
+    [duration]="3000"
+    (didDismiss)="setOpen(false)"
+    swipeGesture="vertical"
+  ></ion-toast>
+</div>

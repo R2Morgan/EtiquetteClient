@@ -1,0 +1,99 @@
+<header-component></header-component>
+<ion-content class="account-content" *ngIf="loading">
+  <div class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+<ion-content [fullscreen]="true" class="account-content" *ngIf="!loading">
+  <div class="account-container">
+    <div class="profile-header">
+      <div class="avatar-wrapper" (click)="changeProfilePicture()">
+        <img *ngIf="user?.profilePicture" [src]="user?.profilePicture" class="avatar" />
+        <div *ngIf="!user?.profilePicture" class="avatar-placeholder">
+          <ion-icon name="person-outline"></ion-icon>
+        </div>
+        <div class="avatar-edit">
+          <ion-icon name="camera-outline"></ion-icon>
+        </div>
+      </div>
+      <h1 class="profile-name">{{ user?.firstName }} {{ user?.lastName }}</h1>
+      <span class="profile-id">&#64;{{ user?.id }}</span>
+    </div>
+
+    <div class="divider-ornament">
+      <span></span>
+      <ion-icon name="diamond-outline"></ion-icon>
+      <span></span>
+    </div>
+    <div class="section">
+      <p class="section-label">Personal Details</p>
+
+      <div class="field-group">
+        <div class="field">
+          <label>First Name</label>
+          <input [(ngModel)]="editFirstName" type="text" placeholder="First name" />
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input [(ngModel)]="editLastName" type="text" placeholder="Last name" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input class="email" [(ngModel)]="editEmail" type="email" placeholder="Email" disabled />
+        </div>
+      </div>
+
+      <button class="btn-primary" (click)="saveChanges()" [disabled]="saving">
+        {{ saving ? 'Saving...' : 'Save Changes' }}
+      </button>
+    </div>
+
+    <div class="divider-ornament">
+      <span></span>
+      <ion-icon name="diamond-outline"></ion-icon>
+      <span></span>
+    </div>
+
+    <!-- Membership -->
+    <div class="section">
+      <p class="section-label">Membership</p>
+
+      <div class="membership-card" [ngClass]="membershipClass()">
+        <div class="membership-tier">
+          <ion-icon [name]="membershipIcon()"></ion-icon>
+          <span class="tier-name">{{ membershipName() }}</span>
+        </div>
+        <p class="membership-renewed" *ngIf="user?.membershipRenewed">
+          Renewed {{ user!.membershipRenewed | date:'MMMM d, yyyy' }}
+        </p>
+      </div>
+
+      <button class="btn-secondary" (click)="goToMembership()">
+        Manage Membership
+      </button>
+    </div>
+
+    <div class="divider-ornament">
+      <span></span>
+      <ion-icon name="diamond-outline"></ion-icon>
+      <span></span>
+    </div>
+
+    <!-- Logout -->
+    <div class="section logout-section">
+      <button class="btn-logout" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Sign Out
+      </button>
+    </div>
+
+  </div>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    [message]="toastMessage"
+    [duration]="3000"
+    (didDismiss)="setOpen(false)"
+    swipeGesture="vertical"
+  ></ion-toast>
+</ion-content>
+<footer-component></footer-component>
